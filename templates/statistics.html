@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Statistics</h1>
+    <p>Most Photographed Location: {{ most_photographed_location }}</p>
+    <p>Most Used Camera Model: {{ most_used_camera_model }}</p>
+
+    <h2>Locations</h2>
+    <canvas id="locationChart"></canvas>
+
+    <h2>Camera Models</h2>
+    <canvas id="cameraChart"></canvas>
+
+    <script>
+        var locationData = JSON.parse('{{ location_data | tojson | safe }}');
+        var cameraData = JSON.parse('{{ camera_data | tojson | safe }}');
+
+        var ctx1 = document.getElementById('locationChart').getContext('2d');
+        var locationChart = new Chart(ctx1, {
+            type: 'bar',
+            data: locationData,
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctx2 = document.getElementById('cameraChart').getContext('2d');
+        var cameraChart = new Chart(ctx2, {
+            type: 'bar',
+            data: cameraData,
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

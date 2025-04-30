@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline View</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .timeline-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .timeline-item img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .timeline-item p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Timeline View</h1>
+    <div class="timeline">
+        {% for metadata in metadata_list %}
+        <div class="timeline-item">
+            <img src="{{ url_for('uploaded_file', filename=metadata.filename) }}" alt="{{ metadata.filename }}">
+            <div>
+                <p>Date and Time: {{ metadata.date_time }}</p>
+                <p>Camera Model: {{ metadata.camera_model }}</p>
+                <p>Location: {{ metadata.location }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

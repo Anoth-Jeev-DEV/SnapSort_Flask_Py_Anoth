@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Search Photos</h1>
+
+    
+    <form action="{{ url_for('search') }}" method="post">
+        <input type="text" name="keyword" placeholder="Enter keyword">
+        <button type="submit">Search</button>
+      </form>
+
+    
+    {% if search_results %}
+        <h2>Results for "{{ keyword }}"</h2>
+        <ul>
+            {% for result in search_results %}
+                <li>
+                    <img src="{{ url_for('uploaded_file', filename=result.filename) }}" alt="Image" style="max-width: 150px;">
+                    <p><strong>File:</strong> {{ result.filename }}</p>
+                    <p><strong>Text:</strong> {{ result.ocr_text }}</p>
+                    <p><strong>Date Taken:</strong> {{ result.date_time }}</p>
+                    <p><strong>Camera Model:</strong> {{ result.camera_model }}</p>
+                    <p><strong>Location:</strong> {{ result.location }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+</body>
+</html>

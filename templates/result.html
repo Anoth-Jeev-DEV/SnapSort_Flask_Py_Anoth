@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .image-item {
+            width: 200px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .metadata {
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-top: 1px solid #ddd;
+        }
+        .metadata p {
+            margin: 5px 0;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .navigation {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Results</h1>
+    <div class="image-grid">
+        {% for metadata in metadata_list %}
+            <div class="image-item">
+                <a href="{{ url_for('uploaded_file', filename=metadata.filename) }}" target="_blank">
+                    <img src="{{ url_for('uploaded_file', filename=metadata.filename) }}" alt="Uploaded Image">
+                </a>
+                <div class="metadata">
+                    <p><strong>Date/Time:</strong> {{ metadata.date_time }}</p>
+                    <p><strong>Camera Model:</strong> {{ metadata.camera_model }}</p>
+                    <p><strong>Location:</strong> {{ metadata.location }}</p>
+                    <p><strong>Latitude:</strong> {{ metadata.latitude }}</p>
+                    <p><strong>Longitude:</strong> {{ metadata.longitude }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="navigation">
+        <a href="{{ url_for('timeline') }}">View Timeline</a> | 
+        <a href="{{ url_for('map_view') }}">View Map</a> | 
+        <a href="{{ url_for('statistics') }}">View Statistics</a> |
+        <a href="{{ url_for('welcome') }}">Welcome page</a>
+    </div>
+</body>
+</html>
