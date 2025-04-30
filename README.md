@@ -41,6 +41,8 @@ uploads/: Directory where user-uploaded images are stored.
 🚀 How to Run
 Click the Play button (or run the app locally with python app.py).
 
+⚠️ Attention : Ensure that Miniconda is installed as the Python interpreter and run the application within that environment
+
 Register or log in as a user.
 
 Upload images with:
