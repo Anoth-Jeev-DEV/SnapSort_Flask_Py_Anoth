@@ -26,7 +26,7 @@ for folder in ['uploads', 'static']:
     if not os.path.exists(folder):
         os.makedirs(folder)
 
-OPENCAGE_API_KEY = 'b50de9c2f9a94fe884a3b9f18419781f'
+OPENCAGE_API_KEY = 'input your Opencage API key here'
 geocoder = OpenCageGeocode(OPENCAGE_API_KEY)
 
 def allowed_file(filename):
