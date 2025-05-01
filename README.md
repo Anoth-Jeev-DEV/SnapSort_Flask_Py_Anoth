@@ -4,6 +4,8 @@ A Flask-based app built in Python for analyzing images with GPS metadata. Featur
 
 This is a Python Flask-based web application developed as part of my software engineering coursework. The app analyzes images containing GPS metadata and provides various insights, including mapping captured locations, keyword filtering from image text, and statistical analysis such as most used camera models and most captured locations.
 
+
+
 📦 Python Packages Used
 os, io: Handle file system operations and input/output streams.
 
@@ -33,10 +35,15 @@ re: Regular expressions for filtering and extracting text patterns.
 
 werkzeug.security: Provides secure password hashing and verification.
 
+
+
 📁 File Structure
 users.csv: Stores new user registration data securely.
 
 uploads/: Directory where user-uploaded images are stored.
+
+
+
 
 🚀 How to Run
 Click the Play button (or run the app locally with python app.py).
@@ -58,6 +65,8 @@ Images displayed with location pins on a map.
 Statistical graphs (e.g., most used camera models).
 
 Keyword-matched images and location-based analytics.
+
+
 
 📊 Features
 Interactive maps of captured image locations.
